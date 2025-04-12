@@ -1,3 +1,7 @@
+mod process;
+
 fn main() {
-    println!("Hello, world I am testing something!");
+    let process_tree = process::tree::build_process_tree();
+    println!("Process Tree:");
+    process::tree::print_tree(&process_tree, 1, 0);
 }
