@@ -1,9 +1,10 @@
-use libc::{kill, SIGKILL};
+use std::process::Command;
+use std::io;
 
-/// Sends SIGKILL to the specified PID.
-/// Returns true if successful, false if an error occurred.
-pub fn kill_process(pid: u32) -> bool {
-    let pid = pid as i32; // libc expects i32
-    let result = unsafe { kill(pid, SIGKILL) };
-    result == 0
+pub fn kill_process(pid: u32) -> io::Result<()> {
+    Command::new("kill")
+        .arg("-9")
+        .arg(pid.to_string())
+        .status()
+        .map(|_| ())
 }
