@@ -1,8 +1,15 @@
 [package]
 name = "linux-process-manager"
 version = "0.1.0"
-edition = "2024"
+edition = "2021"
+
+[[bin]]
+name = "GUI"
+path = "src/main.rs"
+
 
 [dependencies]
-regex = "1"
+eframe = "0.22"
+egui = "0.22"
+regex = "1.9"
 libc = "0.2"
