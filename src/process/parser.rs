@@ -52,6 +52,7 @@ pub fn parse_status(pid: &str) -> Option<ProcessInfo> {
         username,
         start_time_ticks,
         threads,
+        cpu_usage: 0.0,
     })
 }
 
