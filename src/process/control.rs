@@ -1,9 +1,8 @@
-use libc::{kill, SIGKILL};
+use libc::{kill};
 
-/// Sends SIGKILL to the specified PID.
-/// Returns true if successful, false if an error occurred.
-pub fn kill_process(pid: u32) -> bool {
-    let pid = pid as i32; // libc expects i32
-    let result = unsafe { kill(pid, SIGKILL) };
+/// Sends a signal (SIGKILL, SIGSTOP, SIGCONT) to a process.
+/// Returns true if successful, false otherwise.
+pub fn send_signal(pid: u32, signal: i32) -> bool {
+    let result = unsafe { kill(pid as i32, signal) };
     result == 0
 }
